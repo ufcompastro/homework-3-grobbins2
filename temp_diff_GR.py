@@ -1,7 +1,7 @@
 #Code by Grady Robbins
 import matplotlib.pyplot as plt
 import numpy as np
-
+#defined functions for reference:
 def ddx_central(xi,f,h):  #f is function, xi is initial point, h is step size                                  
     return ((f(xi+h) - f(xi-h))/(2*h))
 
@@ -21,7 +21,7 @@ r =Time_annual_avg.reverse() #reversing all lists so in correct order
 r =Temp_annual_avg.reverse()
 r =Time_annual.reverse()
 r =Temp_annual.reverse()
-dT_annual = np.zeros(len(Time_annual),float)
+dT_annual = np.zeros(len(Time_annual),float) #creating empty array to set values in
 for n in range(0,len(Time_annual)):
     h = 1
     if n == 0:  #forward derivative at first term: (Temp[1]-Temp[0])/1 h = 1 x0 = 0
@@ -41,10 +41,10 @@ for n in range(0,len(Time_annual_avg)):
     if n!=0 and n!= len(Time_annual_avg)-1 :
         dT_annual_avg[n] = (Temp_annual_avg[n+1] - Temp_annual_avg[n-1])/(2*h)
 print("the rate of change of Temp for the 10 year averaging is",dT_annual_avg)
-#plt.plot(Time_annual, dT_annual)
-#plt.xlabel('Years')
-#plt.ylabel('change in Temperature')
-#plt.savefig('robbins_hw3a.png', dpi=300)
+plt.plot(Time_annual, dT_annual)
+plt.xlabel('Years')
+plt.ylabel('change in Temperature')
+plt.savefig('robbins_hw3a.png', dpi=300)
 plt.plot(Time_annual_avg, dT_annual_avg)
 plt.xlabel('Years')
 plt.ylabel('change in Temperature')
